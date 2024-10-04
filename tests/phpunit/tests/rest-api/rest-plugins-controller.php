@@ -532,7 +532,7 @@ class WP_REST_Plugins_Controller_Test extends WP_Test_REST_Controller_Testcase {
 		$request = new WP_REST_Request( 'POST', self::BASE );
 		$request->set_body_params( array( 'slug' => 'foo' ) );
 
-		$this->prevent_requests_to_host( 'api.wordpress.org' );
+		$this->prevent_requests_to_host( wp_get_api_source() );
 
 		$this->expectWarning();
 		$response = rest_do_request( $request );

@@ -110,14 +110,14 @@ class WP_REST_Site_Health_Controller extends WP_REST_Controller {
 			sprintf(
 				'/%s/%s',
 				$this->rest_base,
-				'dotorg-communication'
+				'api-source-communication'
 			),
 			array(
 				array(
 					'methods'             => 'GET',
-					'callback'            => array( $this, 'test_dotorg_communication' ),
+					'callback'            => array( $this, 'test_api-source_communication' ),
 					'permission_callback' => function () {
-						return $this->validate_request_permission( 'dotorg_communication' );
+						return $this->validate_request_permission( 'api-source_communication' );
 					},
 				),
 				'schema' => array( $this, 'get_public_item_schema' ),
@@ -222,7 +222,7 @@ class WP_REST_Site_Health_Controller extends WP_REST_Controller {
 	 */
 	public function test_dotorg_communication() {
 		$this->load_admin_textdomain();
-		return $this->site_health->get_test_dotorg_communication();
+		return $this->site_health->get_test_api_source_communication();
 	}
 
 	/**

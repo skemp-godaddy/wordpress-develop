@@ -1290,7 +1290,7 @@ class WP_Site_Health {
 	 *
 	 * @return array The test results.
 	 */
-	public function get_test_dotorg_communication() {
+	public function get_test_api_source_communication() {
 		$result = array(
 			'label'       => __( 'Can communicate with WordPress.org' ),
 			'status'      => '',
@@ -1306,18 +1306,18 @@ class WP_Site_Health {
 			'test'        => 'dotorg_communication',
 		);
 
-		$wp_dotorg = wp_remote_get(
-			'https://api.wordpress.org',
+		$source_url = wp_remote_get(
+			wp_get_api_source(),
 			array(
 				'timeout' => 10,
 			)
 		);
-		if ( ! is_wp_error( $wp_dotorg ) ) {
+		if ( ! is_wp_error( $source_url ) ) {
 			$result['status'] = 'good';
 		} else {
 			$result['status'] = 'critical';
 
-			$result['label'] = __( 'Could not reach WordPress.org' );
+			$result['label'] = __( 'Could not reach your defined api source: ' . wp_get_api_source() );
 
 			$result['description'] .= sprintf(
 				'<p>%s</p>',
@@ -1327,9 +1327,9 @@ class WP_Site_Health {
 					__( 'Error' ),
 					sprintf(
 						/* translators: 1: The IP address WordPress.org resolves to. 2: The error returned by the lookup. */
-						__( 'Your site is unable to reach WordPress.org at %1$s, and returned the error: %2$s' ),
-						gethostbyname( 'api.wordpress.org' ),
-						$wp_dotorg->get_error_message()
+						__( 'Your site is unable to reach your defined api source at %1$s, and returned the error: %2$s' ),
+						gethostbyname( wp_get_api_source() ),
+						$source_url->get_error_message()
 					)
 				)
 			);
@@ -2778,10 +2778,10 @@ class WP_Site_Health {
 			),
 			'async'  => array(
 				'dotorg_communication' => array(
-					'label'             => __( 'Communication with WordPress.org' ),
-					'test'              => rest_url( 'wp-site-health/v1/tests/dotorg-communication' ),
+					'label'             => __( 'Communication with api source' ),
+					'test'              => rest_url( 'wp-site-health/v1/tests/api-source-communication' ),
 					'has_rest'          => true,
-					'async_direct_test' => array( WP_Site_Health::get_instance(), 'get_test_dotorg_communication' ),
+					'async_direct_test' => array( WP_Site_Health::get_instance(), 'get_test_api_source_communication' ),
 				),
 				'background_updates'   => array(
 					'label'             => __( 'Background updates' ),

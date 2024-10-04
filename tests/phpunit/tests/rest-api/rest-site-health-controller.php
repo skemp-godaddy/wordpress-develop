@@ -65,13 +65,13 @@ class WP_Test_REST_Site_Health_Controller extends WP_Test_REST_TestCase {
 	}
 
 	public function test_logged_out() {
-		$response = rest_do_request( '/wp-site-health/v1/tests/dotorg-communication' );
+		$response = rest_do_request( '/wp-site-health/v1/tests/api-source-communication' );
 		$this->assertErrorResponse( 'rest_forbidden', $response, 401 );
 	}
 
 	public function test_insufficient_caps() {
 		wp_set_current_user( self::$subscriber );
-		$response = rest_do_request( '/wp-site-health/v1/tests/dotorg-communication' );
+		$response = rest_do_request( '/wp-site-health/v1/tests/api-source-communication' );
 		$this->assertErrorResponse( 'rest_forbidden', $response, 403 );
 	}
 
@@ -88,14 +88,14 @@ class WP_Test_REST_Site_Health_Controller extends WP_Test_REST_TestCase {
 			}
 		);
 
-		$response = rest_do_request( '/wp-site-health/v1/tests/dotorg-communication' );
+		$response = rest_do_request( '/wp-site-health/v1/tests/api-source-communication' );
 		$this->assertErrorResponse( 'rest_forbidden', $response, 403 );
 	}
 
 	public function test() {
 		wp_set_current_user( self::$admin );
-		$response = rest_do_request( '/wp-site-health/v1/tests/dotorg-communication' );
-		$this->assertSame( 'dotorg_communication', $response->get_data()['test'] );
+		$response = rest_do_request( '/wp-site-health/v1/tests/api-source-communication' );
+		$this->assertSame( 'api-source_communication', $response->get_data()['test'] );
 	}
 
 	/**

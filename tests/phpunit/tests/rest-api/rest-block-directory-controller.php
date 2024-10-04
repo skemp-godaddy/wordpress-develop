@@ -90,7 +90,7 @@ class WP_REST_Block_Directory_Controller_Test extends WP_Test_REST_Controller_Te
 		$request = new WP_REST_Request( 'GET', '/wp/v2/block-directory/search' );
 		$request->set_query_params( array( 'term' => 'foo' ) );
 
-		$this->prevent_requests_to_host( 'api.wordpress.org' );
+		$this->prevent_requests_to_host( wp_get_api_source() );
 
 		$this->expectWarning();
 		$response = rest_do_request( $request );

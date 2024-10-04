@@ -5373,7 +5373,7 @@ function wp_ajax_health_check_dotorg_communication() {
 	}
 
 	$site_health = WP_Site_Health::get_instance();
-	wp_send_json_success( $site_health->get_test_dotorg_communication() );
+	wp_send_json_success( $site_health->get_test_api_source_communication() );
 }
 
 /**

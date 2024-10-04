@@ -9045,3 +9045,24 @@ function wp_admin_notice( $message, $args = array() ) {
 
 	echo wp_kses_post( wp_get_admin_notice( $message, $args ) );
 }
+
+/**
+ * Get the API source URL for WordPress.
+ *
+ * This function retrieves the value of the `api_source` option.
+ * It defaults to `https://api.wordpress.org` if the option is not set.
+ *
+ * @return string The API source URL.
+ */
+function wp_get_api_source() {
+	// Retrieve the 'api_source' option with a fallback to the default value.
+	$api_source = get_option( 'api_source', 'https://api.wordpress.org' );
+
+	/**
+	 * Filters the API source URL.
+	 *
+	 * @param string $api_source The API source URL.
+	 */
+	return apply_filters( 'wp_get_api_source', esc_url( $api_source ) );
+}
+

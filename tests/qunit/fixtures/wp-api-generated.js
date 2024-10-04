@@ -11897,7 +11897,7 @@ mockedApiResponse.Schema = {
                 ]
             }
         },
-        "/wp-site-health/v1/tests/dotorg-communication": {
+        "/wp-site-health/v1/tests/api-source-communication": {
             "namespace": "wp-site-health/v1",
             "methods": [
                 "GET"
@@ -11913,7 +11913,7 @@ mockedApiResponse.Schema = {
             "_links": {
                 "self": [
                     {
-                        "href": "http://example.org/index.php?rest_route=/wp-site-health/v1/tests/dotorg-communication"
+                        "href": "http://example.org/index.php?rest_route=/wp-site-health/v1/tests/api-source-communication"
                     }
                 ]
             }
