@@ -9049,7 +9049,7 @@ function wp_admin_notice( $message, $args = array() ) {
 /**
  * Get the API source URL for WordPress.
  *
- * @since 6.8
+ * @since 6.8.0
  *
  * This function retrieves the value of the `api_source` option.
  * It defaults to `https://api.wordpress.org` if the option is not set.
