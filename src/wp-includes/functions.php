@@ -9049,14 +9049,21 @@ function wp_admin_notice( $message, $args = array() ) {
 /**
  * Get the API source URL for WordPress.
  *
+ * @since 6.8
+ *
  * This function retrieves the value of the `api_source` option.
  * It defaults to `https://api.wordpress.org` if the option is not set.
+ * If the retrieved value does not start with `https` or `http`,
+ * it will prepend `https://` to the value.
  *
  * @return string The API source URL.
  */
 function wp_get_api_source() {
-	// Retrieve the 'api_source' option with a fallback to the default value.
 	$api_source = get_option( 'api_source', 'https://api.wordpress.org' );
+
+	if ( ! preg_match( '#^https?://#i', $api_source ) ) {
+		$api_source = 'https://' . $api_source;
+	}
 
 	/**
 	 * Filters the API source URL.
@@ -9065,4 +9072,5 @@ function wp_get_api_source() {
 	 */
 	return apply_filters( 'wp_get_api_source', esc_url( $api_source ) );
 }
+
 
