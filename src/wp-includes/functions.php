@@ -9073,4 +9073,30 @@ function wp_get_api_source() {
 	return apply_filters( 'wp_get_api_source', esc_url( $api_source ) );
 }
 
+/**
+ * Get the download source URL for WordPress.
+ *
+ * @since 6.8.0
+ *
+ * This function retrieves the value of the `download_source` option.
+ * It defaults to `https://downloads.wordpress.org` if the option is not set.
+ * If the retrieved value does not start with `https` or `http`,
+ * it will prepend `https://` to the value.
+ *
+ * @return string The download source URL.
+ */
+function wp_get_download_source() {
+	$download_source = get_option( 'download_source', 'https://downloads.wordpress.org' );
+
+	if ( ! preg_match( '#^https?://#i', $download_source ) ) {
+		$download_source = 'https://' . $download_source;
+	}
+
+	/**
+	 * Filters the API source URL.
+	 *
+	 * @param string $download_source The API source URL.
+	 */
+	return apply_filters( 'wp_get_download_source', esc_url( $download_source ) );
+}
 

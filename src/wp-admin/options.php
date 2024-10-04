@@ -91,6 +91,7 @@ $allowed_options            = array(
 	'general'    => array(
 		'blogname',
 		'api_source',
+		'download_source',
 		'blogdescription',
 		'site_icon',
 		'gmt_offset',

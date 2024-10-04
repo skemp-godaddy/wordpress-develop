@@ -295,6 +295,12 @@ if ( $new_admin_email && get_option( 'admin_email' ) !== $new_admin_email ) {
 	<td><input name="api_source" type="url" id="api_source" value="<?php form_option( 'api_source' ); ?>" class="regular-text" />
 	<p class="description"><?php _e( 'Enter the URL of the API source for updates and plugin installations.' ); ?></p></td>
 </tr>
+
+<tr>
+	<th scope="row"><label for="download_source"><?php _e( 'Download Source' ); ?></label></th>
+	<td><input name="download_source" type="url" id="download_source" value="<?php form_option( 'download_source' ); ?>" class="regular-text" />
+	<p class="description"><?php _e( 'Enter the URL of the download plugin and theme installations.' ); ?></p></td>
+</tr>
 <?php if ( ! is_multisite() ) { ?>
 
 <tr>
