@@ -77,13 +77,6 @@ require_once ABSPATH . 'wp-admin/admin-header.php';
 <td><input name="blogname" type="text" id="blogname" value="<?php form_option( 'blogname' ); ?>" class="regular-text" /></td>
 </tr>
 
-<tr>
-	<th scope="row"><label for="api_source"><?php _e( 'API Source' ); ?></label></th>
-	<td><input name="api_source" type="url" id="api_source" value="<?php form_option( 'api_source' ); ?>" class="regular-text" />
-	<p class="description"><?php _e( 'Enter the URL of the API source for updates and plugin installations.' ); ?></p></td>
-</tr>
-
-
 <?php
 if ( ! is_multisite() ) {
 	/* translators: Site tagline. */
@@ -297,6 +290,11 @@ if ( $new_admin_email && get_option( 'admin_email' ) !== $new_admin_email ) {
 </td>
 </tr>
 
+<tr>
+	<th scope="row"><label for="api_source"><?php _e( 'API Source' ); ?></label></th>
+	<td><input name="api_source" type="url" id="api_source" value="<?php form_option( 'api_source' ); ?>" class="regular-text" />
+	<p class="description"><?php _e( 'Enter the URL of the API source for updates and plugin installations.' ); ?></p></td>
+</tr>
 <?php if ( ! is_multisite() ) { ?>
 
 <tr>
