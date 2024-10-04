@@ -410,6 +410,7 @@ function populate_options( array $options = array() ) {
 	$defaults = array(
 		'siteurl'                         => $guessurl,
 		'home'                            => $guessurl,
+		'api_source'                      => 'api.wordpress.org',
 		'blogname'                        => __( 'My Site' ),
 		'blogdescription'                 => '',
 		'users_can_register'              => 0,

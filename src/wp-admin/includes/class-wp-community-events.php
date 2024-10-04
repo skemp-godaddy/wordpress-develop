@@ -10,7 +10,7 @@
 /**
  * Class WP_Community_Events.
  *
- * A client for api.wordpress.org/events.
+ * A client for api.provider.tld/events.
  *
  * @since 4.8.0
  */
@@ -62,12 +62,12 @@ class WP_Community_Events {
 	 * Cached events will be immediately returned if the `user_location` property
 	 * is set for the current user, and cached events exist for that location.
 	 *
-	 * Otherwise, this method sends a request to the w.org Events API with location
+	 * Otherwise, this method sends a request to the provider.tld Events API with location
 	 * data. The API will send back a recognized location based on the data, along
 	 * with nearby events.
 	 *
 	 * The browser's request for events is proxied with this method, rather
-	 * than having the browser make the request directly to api.wordpress.org,
+	 * than having the browser make the request directly to api.provider.tld,
 	 * because it allows results to be cached server-side and shared with other
 	 * users and sites in the network. This makes the process more efficient,
 	 * since increasing the number of visits that get cached data means users

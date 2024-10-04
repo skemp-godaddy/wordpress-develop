@@ -90,6 +90,7 @@ if ( is_multisite() && ! current_user_can( 'manage_network_options' ) && 'update
 $allowed_options            = array(
 	'general'    => array(
 		'blogname',
+		'api_source',
 		'blogdescription',
 		'site_icon',
 		'gmt_offset',
