@@ -9085,10 +9085,9 @@ function wp_get_api_source() {
  *
  * @return string The download source URL.
  */
-function wp_get_download_source() {
+function wp_get_download_source($skip_protocol = false) {
 	$download_source = get_option( 'download_source', 'https://downloads.wordpress.org' );
-
-	if ( ! preg_match( '#^https?://#i', $download_source ) ) {
+	if(!$skip_protocol && ! preg_match( '#^https?://#i', $download_source ) ) {
 		$download_source = 'https://' . $download_source;
 	}
 

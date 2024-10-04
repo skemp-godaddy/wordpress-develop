@@ -299,7 +299,7 @@ if ( $new_admin_email && get_option( 'admin_email' ) !== $new_admin_email ) {
 <tr>
 	<th scope="row"><label for="download_source"><?php _e( 'Download Source' ); ?></label></th>
 	<td><input name="download_source" type="url" id="download_source" value="<?php form_option( 'download_source' ); ?>" class="regular-text" />
-	<p class="description"><?php _e( 'Enter the URL of the download plugin and theme installations.' ); ?></p></td>
+	<p class="description"><?php _e( 'Enter the URL of the download source for plugin and theme installations.' ); ?></p></td>
 </tr>
 <?php if ( ! is_multisite() ) { ?>
 
